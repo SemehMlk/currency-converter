@@ -1,0 +1,25 @@
+
+<table mat-table [dataSource]="history" class="mat-elevation-z8">
+    <ng-container matColumnDef="realRate">
+        <th mat-header-cell *matHeaderCellDef> Taux réel. </th>
+        <td mat-cell *matCellDef="let element"> {{element?.realRate}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="userRate">
+        <th mat-header-cell *matHeaderCellDef> Taux saisi. </th>
+        <td mat-cell *matCellDef="let element"> {{element.userRate}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="initialAmount">
+        <th mat-header-cell *matHeaderCellDef> Valeur initiale. </th>
+        <td mat-cell *matCellDef="let element"> {{element.initialAmount}} {{element.fromCurrency}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="convertedAmount">
+        <th mat-header-cell *matHeaderCellDef> Valeur calculée. </th>
+        <td mat-cell *matCellDef="let element"> {{element.convertedAmount}} {{element.toCurrency}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

@@ -8,6 +8,7 @@ Utilisez les formulaires Angular pour simplifier la gestion des entrées utilisa
 Il faut ajouter des validations des entrées et gérer les erreurs
 # Integration d'un linter
 Integration de eslint pour assurer la qualité de code
+# Gestion de state avec ngrx
 
 # Structure du code
 Il serait préférable de diviser l'application en composants plus petits pour une meilleure organisation.

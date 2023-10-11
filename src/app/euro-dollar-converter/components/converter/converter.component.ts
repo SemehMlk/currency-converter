@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
 import { History } from '../../history';
 
 @Component({
@@ -17,9 +16,8 @@ export class ConverterComponent implements OnInit {
   convertedAmount = this.fromAmount * this.exchangeRate;
   isEuroToUsd = true;
 
-  displayedColumns: string[] = ['realRate', 'userRate', 'initialAmount', 'convertedAmount'];
-  dataSource = new MatTableDataSource<History>();
   history: History[] = [];
+  historyData: History[] = [];
 
   ngOnInit() {
     setInterval(this.updateExchangeRate.bind(this), 3000);
@@ -69,7 +67,7 @@ export class ConverterComponent implements OnInit {
       this.history.pop();
     }
 
-    this.dataSource.data = this.history;
+    this.historyData = [...this.history]
 
   }
 
