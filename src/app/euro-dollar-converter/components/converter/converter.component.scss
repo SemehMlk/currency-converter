@@ -1,0 +1,44 @@
+.converter-container{
+    padding: 40px;
+}
+
+.flex-row{
+    display: flex;
+    flex-direction: row;
+}
+.flex-col{
+    display: flex;
+    flex-direction: column;
+}
+
+.ml-20{
+    margin-left: 20px;
+}
+
+.ml-10{
+    margin-left: 10px;
+}
+
+.align-center{
+    align-items: center;
+}
+
+.label{
+    margin-bottom: 10px;
+}
+
+.arrow-right{
+    margin: 0 40px
+}
+
+.disabled-fixed-rate{
+    opacity: 0.3;
+}
+
+.table-container{
+    padding: 0 40px;
+}
+
+.bold{
+    font-weight: 600;
+}
