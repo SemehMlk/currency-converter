@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { History } from '../../history';
 
+export enum RateType {
+  fixed = "fixedRate",
+  real = "realRate",
+}
+
 @Component({
   selector: 'app-converter',
   templateUrl: './converter.component.html',
@@ -9,7 +14,7 @@ import { History } from '../../history';
 export class ConverterComponent implements OnInit {
 
   exchangeRate = 1.1;
-  fixedRate: number | null = null;
+  fixedRate: number;
   fixedRateActive = false;
   initialExchangeRate = 1.1;
   fromAmount = 1;
@@ -33,6 +38,11 @@ export class ConverterComponent implements OnInit {
       if (rateDifferencePercentage > 2) {
         this.fixedRateActive = false;
       }
+      else {
+        this.convertedAmount = this.isEuroToUsd ? this.fromAmount * this.fixedRate : this.fromAmount / this.fixedRate;
+        this.addToHistory(RateType?.fixed);
+        return;
+      }
     }
     this.updateConversion();
   }
@@ -47,14 +57,14 @@ export class ConverterComponent implements OnInit {
     this.updateConversion();
   }
 
-  addToHistory() {
+  addToHistory(type?: any) {
 
     const fromCurrency = this.isEuroToUsd ? '€' : '$';
     const toCurrency = this.isEuroToUsd ? '$' : '€';
 
     const historyItem: History = {
       realRate: this.exchangeRate,
-      userRate: this.exchangeRate,
+      userRate: type && type == RateType?.fixed ? this.fixedRate : this.exchangeRate,
       initialAmount: this.fromAmount,
       convertedAmount: this.convertedAmount,
       fromCurrency,
